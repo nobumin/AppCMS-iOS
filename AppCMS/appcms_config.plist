@@ -5,9 +5,9 @@
 	<key>cachePath</key>
 	<string>_cache</string>
 	<key>googleAnalytics</key>
-	<string>UA-59105179-1</string>
+	<string>Google Analytics ID</string>
 	<key>felloAppId</key>
-	<string>12583</string>
+	<string>fello App ID</string>
 	<key>exportDomains</key>
 	<string></string>
 	<key>UIPackageURL</key>
