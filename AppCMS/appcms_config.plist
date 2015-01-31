@@ -11,6 +11,6 @@
 	<key>exportDomains</key>
 	<string></string>
 	<key>UIPackageURL</key>
-	<string>http://dragonlady.info/snews/ui.zip</string>
+	<string>http://dragonlady.info/ui.zip</string>
 </dict>
 </plist>
