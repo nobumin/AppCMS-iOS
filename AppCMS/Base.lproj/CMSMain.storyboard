@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7YU-9K-rCA">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="UkC-n9-kNx">
+            <objects>
+                <viewController id="7YU-9K-rCA" customClass="CMSViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ABG-7I-6tr"/>
+                        <viewControllerLayoutGuide type="bottom" id="xgm-gY-Q4h"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AhD-Q3-dCc">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ivp-ig-nxb">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="7YU-9K-rCA" id="dnE-0n-SuI"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Ivp-ig-nxb" firstAttribute="centerYWithinMargins" secondItem="AhD-Q3-dCc" secondAttribute="centerYWithinMargins" id="1s4-Cv-9AM"/>
+                            <constraint firstAttribute="trailing" secondItem="Ivp-ig-nxb" secondAttribute="trailingMargin" id="5Ea-Ld-mYO"/>
+                            <constraint firstItem="Ivp-ig-nxb" firstAttribute="leadingMargin" secondItem="AhD-Q3-dCc" secondAttribute="leading" id="7IV-J1-VLG"/>
+                            <constraint firstItem="xgm-gY-Q4h" firstAttribute="bottom" secondItem="Ivp-ig-nxb" secondAttribute="bottom" id="Gjn-fb-cJ3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="webView_" destination="Ivp-ig-nxb" id="Xdq-AQ-XgY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bir-kZ-9lX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="199" y="383"/>
+        </scene>
+    </scenes>
+</document>

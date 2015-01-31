@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>cachePath</key>
+	<string>_cache</string>
+	<key>googleAnalytics</key>
+	<string>UA-59105179-1</string>
+	<key>felloAppId</key>
+	<string>12583</string>
+	<key>exportDomains</key>
+	<string></string>
+	<key>UIPackageURL</key>
+	<string>http://dragonlady.info/snews/ui.zip</string>
+</dict>
+</plist>

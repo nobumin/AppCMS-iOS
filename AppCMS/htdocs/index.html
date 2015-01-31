@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="infocity">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-store">
+<meta http-equiv="Expires" content="-1">
+<meta http-equiv="content-script-type" content="text/javascript">
+<title>Insert title here</title>
+<script type="text/javascript" src="/js/jquery-2.1.3.min.js"></script>
+<script>
+$.ajax({
+  url: "/api/data.json",
+  dataType: 'json',
+  success: function( json ) {
+    console.log(json);
+    $( "#test" ).html( json.data );
+  },
+  error: function(reqObj, msg) {
+    $( "#test" ).html( msg );
+  }
+});
+</script>
+</head>
+<body>
+hello world
+<div id="test">wait...</div>
+<div>
+    <iframe webkit-playsinline width="200" height="200" src="https://www.youtube.com/embed/0dV-LpWCspU?feature=player_detailpage&playsinline=1" frameborder="0">
+<!--    <iframe webkit-playsinline width="200" height="200" src="https://www.youtube.com/embed/DeCZe04p5V4?feature=player_detailpage&playsinline=1" frameborder="0">-->
+    </iframe>
+</div>
+</body>
+</html>
