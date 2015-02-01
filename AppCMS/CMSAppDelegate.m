@@ -205,14 +205,18 @@
 - (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
     if (application.applicationState == UIApplicationStateActive) {
         if (notification.userInfo != nil && notificattion_ != nil) {
-            [notificattion_ notificatoinLocal:notification.userInfo];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [notificattion_ notificatoinLocal:notification.userInfo];
+            });
         }
         return;
     }
     
     if (application.applicationState == UIApplicationStateInactive) {
         if (notification.userInfo != nil && notificattion_ != nil) {
-            [notificattion_ notificatoinLocal:notification.userInfo];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [notificattion_ notificatoinLocal:notification.userInfo];
+            });
         }
         return;
     }
