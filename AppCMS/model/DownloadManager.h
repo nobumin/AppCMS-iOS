@@ -32,6 +32,12 @@ typedef enum {
     CONNECT_WAIT,
 } NETWORK_STATUS;
 
+@protocol backgroundTask <NSObject> //background task instance
+
+@optional
+-(void)execTask:(updateUI)succeed;
+
+@end
 
 @interface DownloadManager : NSObject<NSURLSessionDownloadDelegate, ReachabilityDelegate> {
     
@@ -39,6 +45,10 @@ typedef enum {
 
 + (DownloadManager*)buildManager;
 - (NETWORK_STATUS)checkNetwork;
+//background task
+- (void)addBackgroundTask:(NSString*)key task:(id<backgroundTask>)task;
+- (void)removeBackgroundTask:(NSString*)key;
+- (void)downloadBackground:(updateUI)succeed;
 //ON Progress
 - (void)download:(NSURL*)url succeed:(downloadSucceeded)succeed failed:(downloadFailed)failed;
 - (void)downloadUIPackage:(updateUI)update;

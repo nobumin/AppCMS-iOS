@@ -161,8 +161,16 @@
 {
     //バックグラウンド処理
     DownloadManager *dm = [DownloadManager buildManager];
-    [dm downloadUIPackage:^(BOOL sccess) {
+    [dm offProgressDownloadUIPackage:^(BOOL sccess) {
         self.updateUI = sccess;
+        [self backgroudProcess:completionHandler];
+    }];
+}
+
+- (void)backgroudProcess:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    DownloadManager *dm = [DownloadManager buildManager];
+    [dm downloadBackground:^(BOOL sccess) {
         completionHandler(UIBackgroundFetchResultNewData);
     }];
 }

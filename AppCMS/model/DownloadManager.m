@@ -15,6 +15,8 @@
 @interface DownloadManager() {
     NSMutableDictionary *downloadMap_;
     NSMutableDictionary *onlineWaitMap_;
+    NSMutableDictionary *backgroundTask_;
+    BOOL taskWorking_;
     NETWORK_STATUS status_;
 }
 
@@ -64,6 +66,10 @@ static DownloadManager *sharedInstance;
         if(!onlineWaitMap_) {
             onlineWaitMap_ = [[NSMutableDictionary alloc] initWithCapacity:0];
         }
+        if(!backgroundTask_) {
+            backgroundTask_ = [[NSMutableDictionary alloc] initWithCapacity:0];
+        }
+        taskWorking_ = NO;
     }
     return self;
 }
@@ -136,6 +142,39 @@ static DownloadManager *sharedInstance;
     NSString *baseURL = [absPath substringToIndex:[absPath rangeOfString:path].location];
     
     return [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", baseURL, cachePath, path]];
+}
+
+- (void)addBackgroundTask:(NSString*)key task:(id<backgroundTask>)task
+{
+    [backgroundTask_ setValue:task forKey:key];
+}
+
+- (void)removeBackgroundTask:(NSString*)key
+{
+    [backgroundTask_ removeObjectForKey:key];
+}
+
+- (void)downloadBackground:(updateUI)succeed
+{
+    if(!taskWorking_) {
+        taskWorking_ = YES;
+        [self backgroundTaskExec:0 callback:succeed];
+    }
+}
+
+- (void)backgroundTaskExec:(int)idx callback:(updateUI)succeed
+{
+    NSArray *keys = [backgroundTask_ allKeys];
+    if(idx < [keys count]) {
+        NSString *key = [keys objectAtIndex:idx];
+        id<backgroundTask> task = [backgroundTask_ valueForKey:key];
+        [task execTask:^(BOOL sccess) {
+            [self backgroundTaskExec:idx+1 callback:succeed];
+        }];
+    }else{
+        succeed(YES);
+        taskWorking_ = NO;
+    }
 }
 
 - (void)download:(NSURL*)url succeed:(downloadSucceeded)succeed failed:(downloadFailed)failed
